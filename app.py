@@ -7,6 +7,7 @@ import uuid
 import time
 import torch
 import torchaudio
+from IPython.display import clear_output
 
 
 #download for mecab
@@ -390,44 +391,9 @@ def predict(
 title = "Coqui🐸 XTTS"
 
 description = """
-<br/>
-
-This demo is currently running **XTTS v2.0.3**
-
-<br/>
-
-<a href="https://huggingface.co/coqui/XTTS-v2">XTTS</a> is a text-to-speech model that lets you clone voices into different languages.
-
-<br/>
-
-This is the same model that powers our creator application <a href="https://coqui.ai">Coqui Studio</a> as well as the <a href="https://docs.coqui.ai">Coqui API</a>. In production we apply modifications to make low-latency streaming possible.
-
-<br/>
-
-There are 16 languages.
-
-<p>
-Arabic: ar, Brazilian Portuguese: pt , Chinese: zh-cn, Czech: cs, Dutch: nl, English: en, French: fr, German: de, Italian: it, Polish: pl, Russian: ru, Spanish: es, Turkish: tr, Japanese: ja, Korean: ko, Hungarian: hu, Hindi: hi <br/>
-</p>
-
-<br/>
-
-Leave a star 🌟 on the Github <a href="https://github.com/coqui-ai/TTS">🐸TTS</a>, where our open-source inference and training code lives.
-
-<br/>
 """
 
 links = """
-<img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=0d00920c-8cc9-4bf3-90f2-a615797e5f59" />
-
-|                                 |                                         |
-| ------------------------------- | --------------------------------------- |
-| 🐸💬 **CoquiTTS**                | <a style="display:inline-block" href='https://github.com/coqui-ai/TTS'><img src='https://img.shields.io/github/stars/coqui-ai/TTS?style=social' /></a>|
-| 💼 **Documentation**            | [ReadTheDocs](https://tts.readthedocs.io/en/latest/)
-| 👩‍💻 **Questions**                | [GitHub Discussions](https://github.com/coqui-ai/TTS/discussions) |
-| 🗯 **Community**         | [![Dicord](https://img.shields.io/discord/1037326658807533628?color=%239B59B6&label=chat%20on%20discord)](https://discord.gg/5eXr5seRrv)  |
-
-
 """
 
 article = """
@@ -692,6 +658,8 @@ with gr.Blocks(analytics_enabled=False) as demo:
                     cache_examples=False,)
 
     tts_button.click(predict, [input_text_gr, language_gr, ref_gr, mic_gr, use_mic_gr, clean_ref_gr, auto_det_lang_gr, tos_gr], outputs=[video_gr, audio_gr, out_text_gr, ref_audio_gr])
+
+clear_output()
 
 demo.queue()  
 demo.launch(debug=True, show_api=True, share=True)
