@@ -39,7 +39,7 @@ repo_id = "coqui/xtts"
 print("✅ Export newer ffmpeg binary for denoise filter")
 ZipFile("ffmpeg.zip").extractall()
 print("✅ Make ffmpeg binary executable")
-st = ❗️os.stat("ffmpeg")
+st = os.stat("ffmpeg")
 os.chmod("ffmpeg", st.st_mode | stat.S_IEXEC)
 
 # This will trigger downloading model
