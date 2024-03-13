@@ -36,20 +36,20 @@ from TTS.utils.generic_utils import get_user_data_dir
 repo_id = "coqui/xtts"
 
 # Use never ffmpeg binary for Ubuntu20 to use denoising for microphone input
-print("Export newer ffmpeg binary for denoise filter")
+print("✅ Export newer ffmpeg binary for denoise filter")
 ZipFile("ffmpeg.zip").extractall()
-print("Make ffmpeg binary executable")
-st = os.stat("ffmpeg")
+print("✅ Make ffmpeg binary executable")
+st = ❗️os.stat("ffmpeg")
 os.chmod("ffmpeg", st.st_mode | stat.S_IEXEC)
 
 # This will trigger downloading model
-print("Downloading if not downloaded Coqui XTTS V2")
+print("🔆 Downloading if not downloaded Coqui XTTS V2")
 from TTS.utils.manage import ModelManager
 
 model_name = "tts_models/multilingual/multi-dataset/xtts_v2"
 ModelManager().download_model(model_name)
 model_path = os.path.join(get_user_data_dir("tts"), model_name.replace("/", "--"))
-print("XTTS downloaded")
+print("✅ XTTS downloaded")
 
 config = XttsConfig()
 config.load_json(os.path.join(model_path, "config.json"))
